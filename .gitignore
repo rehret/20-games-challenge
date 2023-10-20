@@ -1,0 +1,11 @@
+﻿# Editor files
+.idea/
+.vs/
+*.sln.DotSettings.user
+
+# Godot files
+.godot/
+*.translation
+
+# Game builds
+**/build/*
