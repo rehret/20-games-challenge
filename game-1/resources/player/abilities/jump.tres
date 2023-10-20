@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cms4hocewhiln"]
+
+[ext_resource type="Script" path="res://code/scripts/Player/Abilities/Jump.cs" id="1_687pe"]
+
+[resource]
+script = ExtResource("1_687pe")
+_jumpVelocity = -400.0
+Slot = 0

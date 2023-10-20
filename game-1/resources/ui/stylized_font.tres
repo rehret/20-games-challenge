@@ -1,0 +1,13 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://4fxs6ehidwfy"]
+
+[sub_resource type="SystemFont" id="SystemFont_3ma5u"]
+font_names = PackedStringArray("Segoe Print")
+font_italic = true
+subpixel_positioning = 0
+oversampling = 1.0
+
+[resource]
+base_font = SubResource("SystemFont_3ma5u")
+variation_embolden = 1.25
+variation_transform = Transform2D(1.09, 0.155, 0.28, 1.21, 0, 0)
+spacing_bottom = -50

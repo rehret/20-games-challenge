@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcvml5kva8dbp"]
+
+[ext_resource type="Texture2D" uid="uid://e1ern1tmkmhc" path="res://addons/portal_7/portal_201.png" id="1_4rwhp"]
+[ext_resource type="Script" path="res://code/scripts/UI/AbilityButton.cs" id="2_25770"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqbdv"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.14902, 0.231373, 0.270588, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+corner_detail = 20
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4ak1"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.113725, 0.176471, 0.207843, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+corner_detail = 20
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3to2"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.196078, 0.305882, 0.360784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+corner_detail = 20
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j24hg"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.0666667, 0.101961, 0.121569, 0.67451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+corner_detail = 20
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7kly"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.14902, 0.231373, 0.270588, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+corner_detail = 20
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+
+[node name="AbilityButton" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_jqbdv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c4ak1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f3to2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j24hg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_m7kly")
+action_mode = 0
+text = "10"
+icon = ExtResource("1_4rwhp")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_25770")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

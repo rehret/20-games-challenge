@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://wk6fv5rq4n75"]
+
+[ext_resource type="Script" path="res://code/scripts/Obstacle.cs" id="1_iywba"]
+[ext_resource type="Texture2D" uid="uid://bbgpkrhncnsha" path="res://scenes/obstacle/obstacle_texture.tres" id="2_ovnjk"]
+[ext_resource type="Texture2D" uid="uid://4einti5xy8ix" path="res://scenes/obstacle/obstacle_cap_texture.tres" id="3_47sk5"]
+[ext_resource type="Shape2D" uid="uid://dmyw3ih7hsxgf" path="res://scenes/obstacle/obstacle_collision_shape2d.tres" id="3_wkngd"]
+[ext_resource type="Shape2D" uid="uid://7f004t2ku0sj" path="res://scenes/obstacle/obstacle_cap_collision_shape2d.tres" id="4_f4k6a"]
+
+[sub_resource type="Gradient" id="Gradient_cf10j"]
+colors = PackedColorArray(0, 0, 0, 0.384314, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4rwdb"]
+gradient = SubResource("Gradient_cf10j")
+width = 10
+height = 20
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_v1bnq"]
+a = Vector2(0, -500)
+b = Vector2(0, 500)
+
+[node name="Obstacle" type="Node2D"]
+script = ExtResource("1_iywba")
+Spread = 40.0
+
+[node name="Top" type="Node2D" parent="."]
+position = Vector2(0, -40)
+
+[node name="TopSprite" type="Sprite2D" parent="Top"]
+texture_repeat = 2
+position = Vector2(0, -500)
+texture = ExtResource("2_ovnjk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Top"]
+position = Vector2(0, -500)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top/StaticBody2D"]
+shape = ExtResource("3_wkngd")
+
+[node name="Cap" type="Node2D" parent="Top"]
+position = Vector2(0, -5)
+
+[node name="CapSprite" type="Sprite2D" parent="Top/Cap"]
+texture = ExtResource("3_47sk5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Top/Cap"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top/Cap/StaticBody2D"]
+shape = ExtResource("4_f4k6a")
+
+[node name="Bottom" type="Node2D" parent="."]
+position = Vector2(0, 40)
+
+[node name="BottomSprite" type="Sprite2D" parent="Bottom"]
+position = Vector2(0, 500)
+texture = ExtResource("2_ovnjk")
+
+[node name="ShadowGradient" type="Sprite2D" parent="Bottom"]
+position = Vector2(0, 15)
+rotation = 1.57079
+texture = SubResource("GradientTexture2D_4rwdb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bottom"]
+position = Vector2(0, 500)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/StaticBody2D"]
+shape = ExtResource("3_wkngd")
+
+[node name="Cap" type="Node2D" parent="Bottom"]
+position = Vector2(0, 5)
+
+[node name="CapSprite" type="Sprite2D" parent="Bottom/Cap"]
+texture = ExtResource("3_47sk5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bottom/Cap"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/Cap/StaticBody2D"]
+shape = ExtResource("4_f4k6a")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ScoreBoundary" type="Area2D" parent="."]
+position = Vector2(-18, 0)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreBoundary"]
+shape = SubResource("SegmentShape2D_v1bnq")

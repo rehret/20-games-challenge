@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfwwdafe7bu57"]
+
+[ext_resource type="Script" path="res://code/scripts/GameMode.cs" id="1_8gfac"]
+[ext_resource type="PackedScene" uid="uid://bpqrf15tyyvw1" path="res://scenes/obstacle_spawner/obstacle_spawner.tscn" id="1_p0gcj"]
+[ext_resource type="PackedScene" uid="uid://c57xv0mpqyba6" path="res://scenes/player.tscn" id="2_f8pdy"]
+[ext_resource type="PackedScene" uid="uid://cmpxmm0ai8skc" path="res://scenes/ui/game_ui.tscn" id="2_wg2yi"]
+
+[sub_resource type="Gradient" id="Gradient_solgx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.698039, 0.894118, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ngl3c"]
+gradient = SubResource("Gradient_solgx")
+width = 1000
+height = 1000
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_s7rt1"]
+a = Vector2(-200, 0)
+b = Vector2(200, 0)
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("_uiController")]
+script = ExtResource("1_8gfac")
+_gameScenePath = "res://scenes/main.tscn"
+_uiController = NodePath("GameUI")
+
+[node name="GameUI" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_wg2yi")]
+z_index = 1000
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -187.0
+offset_top = -406.0
+offset_right = 188.0
+offset_bottom = 406.0
+grow_horizontal = 1
+grow_vertical = 1
+_player = NodePath("../Player")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = SubResource("GradientTexture2D_ngl3c")
+
+[node name="ObstacleSpawner" parent="." instance=ExtResource("1_p0gcj")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_f8pdy")]
+z_index = 1
+position = Vector2(142, 0)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 425)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("SegmentShape2D_s7rt1")
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(0, -425)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+shape = SubResource("SegmentShape2D_s7rt1")
+
+[connection signal="PlayerDied" from="." to="GameUI" method="OnPlayerDied"]
+[connection signal="ScoreChanged" from="." to="GameUI" method="OnScoreChanged"]
+[connection signal="PlayerClearedObstacle" from="ObstacleSpawner" to="." method="OnObstacleCleared"]
+[connection signal="PlayerDied" from="Player" to="." method="OnPlayerDied"]

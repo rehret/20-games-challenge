@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpqrf15tyyvw1"]
+
+[ext_resource type="Script" path="res://code/scripts/ObstacleSpawner.cs" id="1_872db"]
+[ext_resource type="PackedScene" uid="uid://wk6fv5rq4n75" path="res://scenes/obstacle/obstacle.tscn" id="2_mp7nq"]
+
+[node name="ObstacleSpawner" type="Node"]
+script = ExtResource("1_872db")
+ObstacleScene = ExtResource("2_mp7nq")
+_initialPoolSize = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0

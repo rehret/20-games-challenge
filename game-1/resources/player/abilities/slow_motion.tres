@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://de4xvnbyxv13m"]
+
+[ext_resource type="Script" path="res://code/scripts/Player/Abilities/SlowMotion.cs" id="1_iy643"]
+[ext_resource type="Texture2D" uid="uid://bqmu7v31jl2nj" path="res://addons/hourglass-icon/Hourglass.png" id="1_rgri5"]
+
+[resource]
+script = ExtResource("1_iy643")
+_slowMotionTimeScale = 0.5
+_slowMotionDuration = 5.0
+_timeScaleLerpWeight = 0.1
+_timeScaleLerpInterval = 0.05
+Slot = 2
+Cooldown = 30.0
+ButtonIcon = ExtResource("1_rgri5")
